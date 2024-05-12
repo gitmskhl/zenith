@@ -5,10 +5,15 @@ from translator import Translator
 from desktop import Desktop
 from encrypter import Encrypter
 
+from settings import *
+
 class MainApp(Tk):
 	def __init__(self, *args, **kwargs):
 		Tk.__init__(self, *args, **kwargs)
 
+		self.geometry('{}x{}'.format(WIDTH, HEIGHT))
+		self.title('Zenith OS')
+					
 		container = Frame(self)
 		container.pack(fill=BOTH, expand=True)
 		
@@ -33,10 +38,6 @@ class MainApp(Tk):
 		
 	def change_main_frame(self, class_of_frame):
 		self.frames[class_of_frame].tkraise()
-
-
-
-
 
 
 

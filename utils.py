@@ -1,3 +1,8 @@
+from PIL import Image, ImageTk
+import os
+
+IMAGES_DIR = 'images/'
+
 def make_draggable(widget):
     widget.bind("<Button-1>", on_drag_start)
     widget.bind("<B1-Motion>", on_drag_motion)
@@ -12,3 +17,7 @@ def on_drag_motion(event):
     x = widget.winfo_x() - widget._drag_start_x + event.x
     y = widget.winfo_y() - widget._drag_start_y + event.y
     widget.place(x=x, y=y)
+    
+def get_photo_image(filename: str, sizes: tuple):
+	image = Image.open(os.path.join(IMAGES_DIR, filename)).resize(sizes)
+	return ImageTk.PhotoImage(image)
